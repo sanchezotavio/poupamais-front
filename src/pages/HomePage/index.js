@@ -4,6 +4,9 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router'
 
+import {Grid} from '@material-ui/core'
+
+import FinancialIndependence  from '../../components/FinancialIndependence'
 
 class index extends Component {
     constructor(props) {
@@ -12,9 +15,11 @@ class index extends Component {
 
     render() {
         return (
-            <div className="grid">
-                Testando
-            </div>
+            <Grid container spacing={8}>
+                <Grid item xs={12}>
+                   <FinancialIndependence />
+                </Grid>
+            </Grid>
         );
     }
 }

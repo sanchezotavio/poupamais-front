@@ -2,14 +2,13 @@ import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import axios from 'axios'
 import PropTypes from 'prop-types'
-import Grid from 'material-ui/Grid';
 import Header from '../common/Header'
-
+import AppBar from '@material-ui/core/Grid'
 
 class App extends Component {
     render() {
         return (
-            <div>
+            <div style={{width: '100%'}}>
 
                 <Header />
 
