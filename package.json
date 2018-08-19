@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
-    "start": "SET  NODE_ENV=production &&  node server.js",
+    "start": "webpack &&  node server.js",
     "dev": "SET  NODE_ENV=development &&  webpack-dev-server --open",
     "build": "webpack"
   },

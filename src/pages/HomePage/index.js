@@ -4,9 +4,17 @@ import { connect } from 'react-redux'
 
 import { Link } from 'react-router'
 
-import {Grid} from '@material-ui/core'
+import { Grid } from '@material-ui/core'
 
-import FinancialIndependence  from '../../components/FinancialIndependence'
+import Interest from '../../components/Interest'
+
+import InterestTime from '../../components/InterestTime'
+
+import FinancingValueMonth from '../../components/FinancingValueMonth'
+
+import FinancialIndependenceValue from '../../components/FinancialIndependenceValue'
+
+
 
 class index extends Component {
     constructor(props) {
@@ -15,9 +23,22 @@ class index extends Component {
 
     render() {
         return (
-            <Grid container spacing={8}>
+            <Grid container spacing={24}>
                 <Grid item xs={12}>
-                   <FinancialIndependence />
+                    <Grid container spacing={24}>
+                        <Grid item xs={12}>
+                            <Interest />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <InterestTime />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FinancingValueMonth />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <FinancialIndependenceValue />
+                        </Grid>
+                    </Grid>
                 </Grid>
             </Grid>
         );

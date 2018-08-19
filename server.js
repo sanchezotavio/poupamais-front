@@ -44,10 +44,10 @@ app.get("/", function (req, res) {
 });
 
 
-app.get("/search", function (req, res) {
+app.get("/calc/:type/:value/:percent/:time",  (req, res) => {
 
     var options = {
-        url: `https://api-endpoint.igdb.com/games/?search=${req.query.term}&fields=*`,
+        url: `http://localhost:4000/calc/${req.params.type}/${req.params.value}/${req.params.percent}/${req.params.time}`,
         headers: {
             'user-key': 'f07cb189176b1eb896aec56c7b59d621',
             'Access-Control-Allow-Origin': '*',
@@ -55,13 +55,11 @@ app.get("/search", function (req, res) {
             'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token'
         }
     };
-    
-      request(options, function (error, response, body) {
-        console.log(body)
+      request(options,  (error, response, body) => {       
         res.json(body)
     });
 
 });
 
-console.log("Simple static server showing %s listening at http://%s:%s", publicDir, hostname, port);
+console.log("%s listening at http://%s:%s", publicDir, hostname, port);
 app.listen(port, hostname);

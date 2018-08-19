@@ -10,6 +10,7 @@ class App extends Component {
         return (
             <div style={{width: '100%'}}>
 
+
                 <Header />
 
                 {this.props.children}
