@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-
+import InputAdornment from '@material-ui/core/InputAdornment'
 class FinancingValueMonth extends Component {
 
     state = {
@@ -56,33 +56,42 @@ class FinancingValueMonth extends Component {
         return (
             <Paper style={{ padding: '20px' }} elevation={1}>
 
-                <Typography variant="headline" component="h4">
-                    Se você juntar dinheiro sem levar aproveitas os juros, quanto você vai ter depois de um período?
-            </Typography>
+               <Typography variant="headline" style={{fontSize: '18px'}} component="h4">
+                    Financiamento Casa/Automóvel -  Valor mensalidade
+                </Typography>
+                <Typography variant="headline" style={{fontSize: '16px'}} component="p">
+                    Qual será o valor da mensalidade do meu financiamento?
+                </Typography>
                 <Grid container spacing={24}>
                     <Grid item md={4}>
                         <TextField
-                            label="Valor mensal a ser aplicado"
+                            label="Valor Total do Financimento"
                             value={value}
                             onChange={this.handleChange('value')}
                             type="number"
                             margin="normal"
                             fullWidth={true}
+                            InputProps={{
+                                startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+                            }}
                         />
                     </Grid>
                     <Grid item md={4}>
                         <TextField
-                            label="Quanto de juros ao mês?"
+                            label="Juros ao mês"
                             value={percentFinancingValueMonth}
                             onChange={this.handleChange('percentFinancingValueMonth')}
                             type="number"
                             margin="normal"
                             fullWidth={true}
+                            InputProps={{
+                                endAdornment: <InputAdornment position="start">%</InputAdornment>,
+                            }}
                         />
                     </Grid>
                     <Grid item md={4}>
                         <TextField
-                            label="Number"
+                            label="Quantos meses"
                             value={timeMonth}
                             onChange={this.handleChange('timeMonth')}
                             type="number"
@@ -101,7 +110,7 @@ class FinancingValueMonth extends Component {
 
                     <Grid item md={12}>
                         <Typography sytyle={{ fontSize: '22px' }}>
-                            Meses {total}
+                            Valor da Mensalidade R$ {total}
                         </Typography>
                     </Grid>
 

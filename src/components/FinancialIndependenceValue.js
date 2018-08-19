@@ -14,7 +14,8 @@ class FinancialIndependenceValue extends Component {
         total: null,
         value: 0,
         percentFinancialIndependenceValue: 0,
-        timeMonth: 0
+        timeMonth: 0,
+        totalMonth: null
     }
 
     handleChange = name => event => {
@@ -35,9 +36,14 @@ class FinancialIndependenceValue extends Component {
         };
 
         axios.get(`http://CPX-PHM8CKZIASX:5000/calc/financial-independence-value/${value}/${percentFinancialIndependenceValue}/${timeMonth}`, config)
-            .then((res) => this.setState({ total: res.data }))
+            .then((res) => this.setState({ total: res.data },()=>{
+                axios.get(`http://CPX-PHM8CKZIASX:5000/calc/financial-independence-month/${res.data}/${percentFinancialIndependenceValue}/1`, config)
+                .then((resMonth) => this.setState({ totalMonth: resMonth.data }))
+            }))
             .catch((error) => {
-                console.log(error)
+
+               
+               
             })
     }
 
@@ -48,7 +54,8 @@ class FinancialIndependenceValue extends Component {
             total,
             value,
             percentFinancialIndependenceValue,
-            timeMonth
+            timeMonth,
+            totalMonth
         } = this.state
 
 
@@ -56,13 +63,16 @@ class FinancialIndependenceValue extends Component {
         return (
             <Paper style={{ padding: '20px' }} elevation={1}>
 
+            <Typography variant="headline" style={{fontSize: '18px'}} component="h4">
+                 Independecia financeira
+                </Typography>
                 <Typography variant="headline" component="h4">
-                    Se você juntar dinheiro sem levar aproveitas os juros, quanto você vai ter depois de um período?
+                Quanto Preciso para obter minha independecia financeira?
             </Typography>
                 <Grid container spacing={24}>
                     <Grid item md={4}>
                         <TextField
-                            label="Valor mensal a ser aplicado"
+                            label="Valor que preciso por mês"
                             value={value}
                             onChange={this.handleChange('value')}
                             type="number"
@@ -72,7 +82,7 @@ class FinancialIndependenceValue extends Component {
                     </Grid>
                     <Grid item md={4}>
                         <TextField
-                            label="Quanto de juros ao mês?"
+                            label="Juros ao mês do meu investimento"
                             value={percentFinancialIndependenceValue}
                             onChange={this.handleChange('percentFinancialIndependenceValue')}
                             type="number"
@@ -92,14 +102,27 @@ class FinancialIndependenceValue extends Component {
 
                     <Grid item md={12}>
                         <Typography sytyle={{ fontSize: '22px' }}>
-                            Meses {total}
+                          R$ {total}
                         </Typography>
+                        <Typography sytyle={{ fontSize: '22px' }}>
+                           Tempo para conquistar esse valor: {totalMonth} meses
+                      </Typography>
                     </Grid>
 
                     <Grid item md={12}>
                         <Typography sytyle={{ fontSize: '22px' }}>
                             API Racket : {`http://localhost:4000/calc/financial-independence-value/${value}/${percentFinancialIndependenceValue}`}
                         </Typography>
+
+                      
+                       {
+                           total !== null ? 
+                           <Typography sytyle={{ fontSize: '22px' }}>
+                            API Racket : {`http://localhost:4000/calc/financial-independence-month/${total}/${percentFinancialIndependenceValue}/1`}
+                        </Typography> : ''
+                       } 
+
+                        
                     </Grid>
 
                 </Grid>

@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
-import InputAdornment from '@material-ui/core/InputAdornment'
+import InputAdornment from '@material-ui/core/InputAdornment';
 
 class Interest extends Component {
 
@@ -41,7 +41,7 @@ class Interest extends Component {
             headers: { 'Access-Control-Allow-Origin': '*' }
         };
 
-        axios.get(`http://CPX-PHM8CKZIASX:5000/calc/simple-interest/${value}/${percentInterest}/${timeMonth}`, config)
+        axios.get(`http://CPX-PHM8CKZIASX:5000/calc/interest/${value}/${percentInterest}/${timeMonth}`, config)
             .then((res) => this.setState({ total: res.data }))
             .catch((error) => {
                 console.log(error)
@@ -64,11 +64,11 @@ class Interest extends Component {
             <Paper style={{ padding: '20px' }} elevation={1}>
 
                 <Typography variant="headline" style={{fontSize: '18px'}} component="h4">
-                    Investimento - Juros Simples
+                    Investimento - Juros Compostos
                 </Typography>
                 <Typography variant="headline" style={{fontSize: '16px'}} component="p">
-                    Os juros simples sempre incidem sobre o valor da aplicação inicial, 
-                    desconsiderando o montante acumulado com o passar do tempo.
+                     Os juros compostos sempre incidem sobre o valor do montante acumulado 
+                     com o passar do tempo.
                 </Typography>
                 <Grid container spacing={24}>
                     <Grid item md={4}>
@@ -124,7 +124,7 @@ class Interest extends Component {
 
                     <Grid item md={12}>
                         <Typography sytyle={{ fontSize: '22px' }}>
-                            API Racket : {`http://localhost:4000/calc/simple-interest/${value}/${percentInterest}/${timeMonth}`}
+                            API Racket : {`http://localhost:4000/calc/interest/${value}/${percentInterest}/${timeMonth}`}
                         </Typography>
                     </Grid>
 

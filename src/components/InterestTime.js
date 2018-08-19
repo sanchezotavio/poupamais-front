@@ -7,9 +7,9 @@ import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Button from '@material-ui/core/Button'
+import InputAdornment from '@material-ui/core/InputAdornment'
 
 class InterestTime extends Component {
-
 
 
     state = {
@@ -60,18 +60,24 @@ class InterestTime extends Component {
         return (
             <Paper style={{ padding: '20px' }} elevation={1}>
 
-                <Typography variant="headline" component="h4">
-                    Se você juntar dinheiro sem levar aproveitas os juros, quanto você vai ter depois de um período?
+                  <Typography variant="headline" style={{fontSize: '18px'}} component="h4">
+                    Investimento - Tempo para conseguir um determinado valor 
+                </Typography>
+                <Typography variant="headline" style={{fontSize: '16px'}} component="p">
+                   Quantos meses de investimento vou demorar para conseguir um determinado valor, através dos juros?      
                 </Typography>
                 <Grid container spacing={24}>
                     <Grid item md={4}>
                         <TextField
-                            label="Valor mensal a ser aplicado"
+                            label="Montante Inicial"
                             value={value}
                             onChange={this.handleChange('value')}
                             type="number"
                             margin="normal"
                             fullWidth={true}
+                            InputProps={{
+                                startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+                            }}
                         />
                     </Grid>
                     <Grid item md={4}>
@@ -82,16 +88,22 @@ class InterestTime extends Component {
                             type="number"
                             margin="normal"
                             fullWidth={true}
+                            InputProps={{
+                                endAdornment: <InputAdornment position="start">%</InputAdornment>,
+                            }}
                         />
                     </Grid>
                     <Grid item md={4}>
                         <TextField
-                            label="Number"
+                            label="Qual o valor final que você deseja possuir?"
                             value={timeMonth}
                             onChange={this.handleChange('timeMonth')}
                             type="number"
                             margin="normal"
                             fullWidth={true}
+                            InputProps={{
+                                startAdornment: <InputAdornment position="start">R$</InputAdornment>,
+                            }}
                         />
                     </Grid>
 
@@ -105,13 +117,13 @@ class InterestTime extends Component {
 
                     <Grid item md={12}>
                         <Typography sytyle={{ fontSize: '22px' }}>
-                            Total R$ {total}
+                             {total} Meses
                         </Typography>
                     </Grid>
 
                      <Grid item md={12}>
                     <Typography sytyle={{ fontSize: '22px' }}>
-                        API Racket : { `http://localhost:4000/calc/interest/${value}/${percentInterestTime}/${timeMonth}`}
+                        API Racket : { `http://localhost:4000/calc/interest-time/${value}/${percentInterestTime}/${timeMonth}`}
                     </Typography>
                 </Grid>
                    

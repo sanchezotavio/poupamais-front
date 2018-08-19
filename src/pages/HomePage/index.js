@@ -14,6 +14,7 @@ import FinancingValueMonth from '../../components/FinancingValueMonth'
 
 import FinancialIndependenceValue from '../../components/FinancialIndependenceValue'
 
+import InterestTotal from '../../components/InterestTotal'
 
 
 class index extends Component {
@@ -28,6 +29,9 @@ class index extends Component {
                     <Grid container spacing={24}>
                         <Grid item xs={12}>
                             <Interest />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <InterestTotal />
                         </Grid>
                         <Grid item xs={12}>
                             <InterestTime />
