@@ -35,9 +35,9 @@ class FinancialIndependenceValue extends Component {
             headers: { 'Access-Control-Allow-Origin': '*' }
         };
 
-        axios.get(`http://CPX-PHM8CKZIASX:5000/calc/financial-independence-value/${value}/${percentFinancialIndependenceValue}/${timeMonth}`, config)
+        axios.get(`http://localhost:5000/calc/financial-independence-value/${value}/${percentFinancialIndependenceValue}/${timeMonth}`, config)
             .then((res) => this.setState({ total: res.data },()=>{
-                axios.get(`http://CPX-PHM8CKZIASX:5000/calc/financial-independence-month/${res.data}/${percentFinancialIndependenceValue}/1`, config)
+                axios.get(`http://localhost:5000/calc/financial-independence-month/${res.data}/${percentFinancialIndependenceValue}/1`, config)
                 .then((resMonth) => this.setState({ totalMonth: resMonth.data }))
             }))
             .catch((error) => {

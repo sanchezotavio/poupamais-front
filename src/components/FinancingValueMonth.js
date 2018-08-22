@@ -34,7 +34,7 @@ class FinancingValueMonth extends Component {
             headers: { 'Access-Control-Allow-Origin': '*' }
         };
 
-        axios.get(`http://CPX-PHM8CKZIASX:5000/calc/financing-value-month/${value}/${percentFinancingValueMonth}/${timeMonth}`, config)
+        axios.get(`http://localhost:5000/calc/financing-value-month/${value}/${percentFinancingValueMonth}/${timeMonth}`, config)
             .then((res) => this.setState({ total: res.data }))
             .catch((error) => {
                 console.log(error)
